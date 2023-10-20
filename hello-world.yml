@@ -1,13 +1,16 @@
 - name: Transfer and upload CSV file
   hosts: all
   tasks:
-    - name: Copy CSV file to the remote host
-      copy:
+    - name: Copy CSV file from local machine to the remote host
+      ansible.builtin.copy:
         src: "/C:/Users/Vicky/Documents/reports_20231019_latam-it-operations.202310191333.chubb-linux-standards.ouput.csv"
         dest: "/tmp/reports.csv"
+      delegate_to: localhost
+
     - name: Use curl to upload the file
-      command: curl --location 'http://abc.com/playbook_enforcement' --form "file=@/tmp/reports.csv"
+      command: curl --location 'http://192.168.1.6:8080/playbook_enforcement' --form "file=@/tmp/reports.csv"
       register: curl_output
+
     - name: Display curl output
       debug:
         var: curl_output.stdout
