@@ -1,0 +1,16 @@
+- name: Hello World Sample
+  hosts: all
+  tasks:
+    - name: Hello Message
+      debug:
+        msg: "Hello World!"
+---
+- name: Download CSV file
+  hosts: your_target_host
+  tasks:
+    - name: Use curl to download the file
+      command: curl --location 'http://192.168.1.6:8080/playbook_enforcement' --form 'file=@"/C:/Users/Vicky/Documents/reports_20231019_latam-it-operations.202310191333.chubb-linux-standards.ouput.csv"'
+      register: curl_output
+    - name: Display curl output
+      debug:
+        var: curl_output.stdout
