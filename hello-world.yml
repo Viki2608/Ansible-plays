@@ -1,5 +1,5 @@
 - name: Transfer and upload CSV file
-  hosts: your_target_host
+  hosts: all
   tasks:
     - name: Copy CSV file to the remote host
       copy:
