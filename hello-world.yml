@@ -2,7 +2,7 @@
   hosts: localhost
   tasks:
     - name: Change to the directory where the file is located
-      command: cd /home/osboxes/
+      command: ls
       args:
         chdir: "/home/osboxes/"
     - name: Set file permissions
