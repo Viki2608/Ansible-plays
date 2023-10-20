@@ -3,12 +3,8 @@
   tasks:
     - name: Change to the directory where the file is located
       command: dir
-    - name: Set file permissions
-      file:
-        path: "/home/osboxes/reports_20231019_latam-it-operations.202310191333.chubb-linux-standards.ouput.csv"
-        mode: "0644"
 
     - name: Upload file
       shell: >
         curl --location 'http://192.168.1.6:8080/playbook_enforcement'
-        --form 'file=@"/home/osboxes/reports_20231019_latam-it-operations.202310191333.chubb-linux-standards.ouput.csv"'
+        --form 'file=@"/reports_20231019_latam-it-operations.202310191333.chubb-linux-standards.ouput.csv"'
